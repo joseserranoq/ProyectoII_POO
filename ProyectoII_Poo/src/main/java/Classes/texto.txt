@@ -1,0 +1,3 @@
+Points1 Jose 10
+Points1 J 25
+Points1 jos 5

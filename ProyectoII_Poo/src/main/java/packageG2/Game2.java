@@ -4,20 +4,22 @@
  * and open the template in the editor.
  */
 package packageG2;
-
+import Classes.GameFunction;
+import Classes.Stat;
+import java.lang.Math;
 /**
  *
  * @author jose_
  */
-public class Game2 extends javax.swing.JInternalFrame {
-
-    /**
+public class Game2 extends javax.swing.JInternalFrame implements GameFunction {
+    private String[] arr;
+    /*
      * Creates new form Game2
      */
     public Game2() {
+        this.arr = new String[]{"Scissors", "Paper", "Rock"};
         initComponents();
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,21 +29,180 @@ public class Game2 extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Panel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        labelCO = new javax.swing.JLabel();
+        bRock = new javax.swing.JButton();
+        bPaper = new javax.swing.JButton();
+        bScissors = new javax.swing.JButton();
+        labelR = new javax.swing.JLabel();
+        labelRival = new javax.swing.JLabel();
+        labelP = new javax.swing.JLabel();
+        labelScore = new javax.swing.JLabel();
+        labelRes = new javax.swing.JLabel();
+        labelName = new javax.swing.JLabel();
+        textName = new javax.swing.JTextField();
+
+        Panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setText("Rock  Paper  Scissors");
+        Panel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, -1, -1));
+
+        labelCO.setText("Choose an option:");
+        Panel1.add(labelCO, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, -1, -1));
+
+        bRock.setText("Rock");
+        bRock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bRockActionPerformed(evt);
+            }
+        });
+        Panel1.add(bRock, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
+
+        bPaper.setText("Paper");
+        bPaper.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bPaperActionPerformed(evt);
+            }
+        });
+        Panel1.add(bPaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, -1, -1));
+
+        bScissors.setText("Scissors");
+        bScissors.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bScissorsActionPerformed(evt);
+            }
+        });
+        Panel1.add(bScissors, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, -1, -1));
+
+        labelR.setText("Rival:");
+        Panel1.add(labelR, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
+
+        labelRival.setText("RPS");
+        Panel1.add(labelRival, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, -1, -1));
+
+        labelP.setText("Points:");
+        Panel1.add(labelP, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, -1, -1));
+
+        labelScore.setText("0");
+        Panel1.add(labelScore, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, -1, -1));
+        Panel1.add(labelRes, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 180, 20));
+
+        labelName.setText("Nombre:");
+        Panel1.add(labelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, -1, -1));
+        Panel1.add(textName, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, 70, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addComponent(Panel1, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addComponent(Panel1, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void bRockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRockActionPerformed
+        // TODO add your handling code here:
+        startG();
+        String r =labelRival.getText();
+        if(r == "Rock"){
+            labelRes.setText("It is tie, keep playing");
+        }
+        else if( r== "Scissors"){   //adds the points
+            labelRes.setText("You win");
+            labelScore.setText(String.valueOf(Integer.valueOf(labelScore.getText())+5));
+        }
+        else{
+            labelRes.setText("You lose your points are: "+labelScore.getText());
+            bRock.setEnabled(false);
+            bScissors.setEnabled(false);
+            bPaper.setEnabled(false);
+           
+            //getstats
+            //appear a button to exit the game
+        }
+    }//GEN-LAST:event_bRockActionPerformed
+
+    private void bPaperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPaperActionPerformed
+        // TODO add your handling code here:
+        startG();
+                String r =labelRival.getText();
+        if(r == "Paper"){
+            labelRes.setText("It is tie, keep playing");
+        }
+        else if( r== "Rock"){   //adds the points
+            labelRes.setText("You win");
+            labelScore.setText(String.valueOf(Integer.valueOf(labelScore.getText())+5));
+        }
+        else{//Scissors wins Paper
+            labelRes.setText("You lose your points are: "+labelScore.getText());
+            bRock.setEnabled(false);
+            bScissors.setEnabled(false);
+            bPaper.setEnabled(false);
+            //getstats
+            //appear a button to exit the game
+        }
+    }//GEN-LAST:event_bPaperActionPerformed
+
+    private void bScissorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bScissorsActionPerformed
+        // TODO add your handling code here:
+        startG();
+                String r =labelRival.getText();
+        if(r == "Scissors"){
+            labelRes.setText("It is tie, keep playing");
+        }
+        else if( r== "Paper"){   //adds the points
+            labelRes.setText("You win");
+            labelScore.setText(String.valueOf(Integer.valueOf(labelScore.getText())+5));
+        }
+        else{ // Rock wins Scissors
+            labelRes.setText("You lose your points are: "+labelScore.getText());
+            bRock.setEnabled(false);
+            bScissors.setEnabled(false);
+            bPaper.setEnabled(false);
+            //getstats
+            //appear a button to exit the game
+        }
+    }//GEN-LAST:event_bScissorsActionPerformed
+    
+    @Override
+    public void startG() {
+        int r = (int)(Math.random()*2);
+        labelRival.setText(this.arr[r]);
+        
+    }
+
+    @Override
+    public Stat getStats() {
+                Stat stat;
+        if(textName.getText().isBlank()){
+            stat = new Stat("Points2","default",Integer.valueOf(labelScore.getText()));
+        }
+        else{
+            stat = new Stat("Points2",textName.getText(),Integer.valueOf(labelScore.getText()));
+        }
+        return stat;
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Panel1;
+    private javax.swing.JButton bPaper;
+    private javax.swing.JButton bRock;
+    private javax.swing.JButton bScissors;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel labelCO;
+    private javax.swing.JLabel labelName;
+    private javax.swing.JLabel labelP;
+    private javax.swing.JLabel labelR;
+    private javax.swing.JLabel labelRes;
+    private javax.swing.JLabel labelRival;
+    private javax.swing.JLabel labelScore;
+    private javax.swing.JTextField textName;
     // End of variables declaration//GEN-END:variables
 }

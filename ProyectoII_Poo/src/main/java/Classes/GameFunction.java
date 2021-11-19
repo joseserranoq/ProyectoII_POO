@@ -12,7 +12,7 @@ import Classes.Stat;
  * @author jose_
  */
 public interface GameFunction {
-    public void start();
+    public void startG();
     public Stat getStats();
     
 }

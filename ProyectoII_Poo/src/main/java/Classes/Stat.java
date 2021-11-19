@@ -5,8 +5,14 @@
  */
 package Classes;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.util.Scanner;
 
 /**
  *
@@ -47,15 +53,39 @@ public class Stat {
         this.value = valor;
     }
     
-    public void writeInArchive(String gameName,String type,int points){
-        File archive;
+    public void writeArchive(){
+        File f;
+        FileWriter w;
+        BufferedWriter br;
+        PrintWriter wr;
         try{
-            archive = new File("src\\main\\java\\Classes");
-            if (archive.createNewFile())
-                System.out.println("The archive has been created");
-        }catch(IOException e){
-            System.err.println("The archive has not been created "+e);
+            f=new File("src\\main\\java\\Classes\\texto.txt");
+            w = new FileWriter(f,true);
+            br= new BufferedWriter(w);
+            wr = new PrintWriter(br);
+            wr.write(this.key+" "+this.name+" "+this.value+"\n");
+            wr.close();
+            br.close();
+           
+        }catch(Exception e){
+            System.out.println("Se ha presentado un error"+e);
         }
     }
-    
+    public void see() {
+        File f = new File("src\\main\\java\\Classes\\texto.txt");
+        String cadena;
+        Scanner entrada = null;
+        try{
+            entrada = new Scanner(f);
+            while(entrada.hasNext()){
+                cadena = entrada.nextLine();
+                System.out.println(cadena);
+            }
+            System.out.println("It has read all in the archive");
+        }catch(FileNotFoundException e){
+            System.out.println(e.getMessage());
+        }finally{
+            entrada.close();
+        }       
+    }
 }
