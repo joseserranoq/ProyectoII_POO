@@ -10,7 +10,7 @@ import packageG2.Game2;
  *
  * @author jose_
  */
-public final class SingletonG2 {
+public final class SingletonG2 {    //it makes an unique instance for game2
     
     public static Game2 value;
 

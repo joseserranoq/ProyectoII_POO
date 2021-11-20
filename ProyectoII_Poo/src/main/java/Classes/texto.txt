@@ -1,0 +1,13 @@
+Points1 Jose 10
+Points1 J 25
+Points1 jos 5
+Points1 default 0
+Points2 default 0
+Points2 default 0
+Points2 default 5
+Points1 default 0
+Earnings asd 670
+segundos asd 2
+Earnings as 0
+Points2 asd 0
+Points2 default 5

@@ -5,19 +5,46 @@
  */
 package packageG3;
 
+import Classes.GameFunction;
+import Classes.Stat;
+
 /**
  *
  * @author jose_
  */
-public class Game3 extends javax.swing.JInternalFrame {
-
+public class Game3 extends javax.swing.JInternalFrame implements GameFunction {
+    private int funds ;
     /**
      * Creates new form Game3
      */
-    public Game3() {
+    public Game3() { //it initialize the components of the game
         initComponents();
+        startG();
+
+    }
+    @Override
+    public void startG() {  //it sets the labels to start the game
+        labelPosition.setVisible(false);
+        horse1.setVisible(false);
+        horse2.setVisible(false);
+        horse3.setVisible(false);
+        horse4.setVisible(false);
+        horse5.setVisible(false);
+        labelTearn.setVisible(false);
+        earnings.setVisible(false);
     }
 
+    @Override
+    public Stat getStats() {    //it gets the earnings text of the game and the name if there is no name it gets a default name
+        Stat stat;
+        if(textName.getText().isBlank()){
+            stat = new Stat("Earnings","default",Integer.valueOf(earnings.getText()));
+        }
+        else{
+            stat = new Stat("Earnings",textName.getText(),Integer.valueOf(earnings.getText()));
+        }
+        return stat;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,21 +54,203 @@ public class Game3 extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        textBet = new javax.swing.JTextField();
+        horse1 = new javax.swing.JLabel();
+        horse2 = new javax.swing.JLabel();
+        horse3 = new javax.swing.JLabel();
+        horse4 = new javax.swing.JLabel();
+        horse5 = new javax.swing.JLabel();
+        bOk = new javax.swing.JButton();
+        labelFunds = new javax.swing.JLabel();
+        money = new javax.swing.JLabel();
+        textName = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        textHorse = new javax.swing.JTextField();
+        labelPosition = new javax.swing.JLabel();
+        statusLabel = new javax.swing.JLabel();
+        labelTearn = new javax.swing.JLabel();
+        earnings = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+
+        panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setText("Digit your bet:");
+        panel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
+        panel1.add(textBet, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 70, -1));
+
+        horse1.setText("1°");
+        panel1.add(horse1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, -1, -1));
+
+        horse2.setText("2°");
+        panel1.add(horse2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, -1, -1));
+
+        horse3.setText("3°");
+        panel1.add(horse3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, -1, -1));
+
+        horse4.setText("4°");
+        panel1.add(horse4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, -1, -1));
+
+        horse5.setText("5°");
+        panel1.add(horse5, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 160, -1, -1));
+
+        bOk.setText("Ok");
+        bOk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bOkActionPerformed(evt);
+            }
+        });
+        panel1.add(bOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, -1, -1));
+
+        labelFunds.setText("Funds:");
+        panel1.add(labelFunds, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, 20));
+
+        money.setText("1000");
+        panel1.add(money, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 60, 20));
+        panel1.add(textName, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 50, -1));
+
+        jLabel2.setText("Name:");
+        panel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, -1, -1));
+
+        jLabel3.setText("Digit the Horse:");
+        panel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
+        panel1.add(textHorse, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 30, -1));
+
+        labelPosition.setText("Positions:");
+        panel1.add(labelPosition, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, -1, -1));
+        panel1.add(statusLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
+
+        labelTearn.setText("Total earnings:");
+        panel1.add(labelTearn, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, -1, -1));
+
+        earnings.setText("0");
+        panel1.add(earnings, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, -1, -1));
+
+        jLabel4.setText("1 2 3 4 5 Horses");
+        panel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void bOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bOkActionPerformed
+        // TODO add your handling code here:
+        //this button is the responsible of making certain decision to see if the game continue or not, 
+        //or to verify if theres something wrong with the fields of the game
+                HorseList hL = new HorseList();
+                Race r = new Race(hL);
+                r.beginRace();
+        try{
+            if(!textBet.getText().isBlank() && !textHorse.getText().isBlank()){ //it verifies if there is content in the text               
+                System.out.println("a"+textHorse.getText());
+                System.out.println("b"+horse1.getText());
+                //if it wins the bet multiply his bet for 5 and sums into his funds
+                if(textHorse.getText().contains(horse1.getText()) && (Integer.valueOf(textBet.getText()) <= Integer.valueOf(money.getText()))){    
+                    money.setText(String.valueOf(Integer.valueOf(textBet.getText()) *5 +Integer.valueOf(money.getText()) ));
+                    //sums the earnings
+                    earnings.setText(String.valueOf(Integer.valueOf(earnings.getText())+Integer.valueOf(textBet.getText()) *5));
+                    //show the status of the bet
+                    statusLabel.setText("You win!");
+                    statusLabel.setVisible(true);
+                    labelPosition.setVisible(true);
+                    horse1.setVisible(true);
+                    horse2.setVisible(true);
+                    horse3.setVisible(true);
+                    horse4.setVisible(true);
+                    horse5.setVisible(true);
+                    textBet.setText("");
+                    textHorse.setText("");
+                    
+                }
+                //if you lose the bet
+                else if(!textHorse.getText().contains(horse1.getText()) && (Integer.valueOf(textBet.getText()) <= Integer.valueOf(money.getText()))){ //if it lose it substracts the quantity that was betted into funds
+                    money.setText(String.valueOf(Integer.valueOf(money.getText())-Integer.valueOf(textBet.getText())));
+                    statusLabel.setText("You lose");
+                    statusLabel.setVisible(true);
+                    labelPosition.setVisible(true);
+                    horse1.setVisible(true);
+                    horse2.setVisible(true);
+                    horse3.setVisible(true);
+                    horse4.setVisible(true);
+                    horse5.setVisible(true);
+                    textBet.setText("");
+                    textHorse.setText("");                    
+                    //if the money gets below 0 the game ends
+                    if(Integer.valueOf(money.getText()) <= 0) {
+                       statusLabel.setText("Game Over");
+                       textBet.setEnabled(false);
+                       textHorse.setEnabled(false);
+                       bOk.setEnabled(false);
+                       textName.setEnabled(false);
+                        labelTearn.setVisible(true);
+                        earnings.setVisible(true);
+                        labelPosition.setVisible(false);
+                        horse1.setVisible(false);
+                        horse2.setVisible(false);
+                        horse3.setVisible(false);
+                        horse4.setVisible(false);
+                        horse5.setVisible(false);
+                       //getstats  
+                       //it adds the earnings to the statistic txt file
+                       Stat s = getStats();
+                       s.writeArchive();
+                    }
+                }
+                //if the bet is greater than the money
+                else{
+                    statusLabel.setText("You can not bet that quantity");
+                    statusLabel.setVisible(true);
+                    labelPosition.setVisible(false);
+                    horse1.setVisible(false);
+                    horse2.setVisible(false);
+                    horse3.setVisible(false);
+                    horse4.setVisible(false);
+                    horse5.setVisible(false);
+                }
+            }
+            //if the text fields are blank
+            else{
+            statusLabel.setText("Please fill the text field below");
+            statusLabel.setEnabled(true);
+            }
+        }catch(Exception e){
+            statusLabel.setText("Please digit numbers in the text fields of Horse and Bet");
+        }      
+    }//GEN-LAST:event_bOkActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bOk;
+    private javax.swing.JLabel earnings;
+    public static javax.swing.JLabel horse1;
+    public static javax.swing.JLabel horse2;
+    public static javax.swing.JLabel horse3;
+    public static javax.swing.JLabel horse4;
+    public static javax.swing.JLabel horse5;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel labelFunds;
+    private javax.swing.JLabel labelPosition;
+    private javax.swing.JLabel labelTearn;
+    private javax.swing.JLabel money;
+    private javax.swing.JPanel panel1;
+    private javax.swing.JLabel statusLabel;
+    private javax.swing.JTextField textBet;
+    private javax.swing.JTextField textHorse;
+    private javax.swing.JTextField textName;
     // End of variables declaration//GEN-END:variables
+
 }

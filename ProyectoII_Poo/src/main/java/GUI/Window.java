@@ -5,21 +5,33 @@
  */
 package GUI;
 //importing the packages of the games
+import Classes.Stat;
 import packageG1.Game1;
 import packageG2.Game2;
 import packageG3.Game3;
+import packageG4.Game4;
+import packageStadistics.Statistic;
 import Singleton.*;
 /**
  *
  * @author jose_
  */
 public class Window extends javax.swing.JFrame {
-
+    private  Game1 g1 = SingletonG1.getInstance();
+    private Game2 g2= SingletonG2.getInstance();
+    private Game3 g3= SingletonG3.getInstance();
+    private Game4 j1 = SingletonG4.getInstance();
+    private Statistic s = new Statistic();
     /**
      * Creates new form Window
      */
     public Window() {
         initComponents();
+        DesktopPane.add(this.g1);
+        DesktopPane.add(this.g2);
+        DesktopPane.add(this.g3);
+        DesktopPane.add(this.s);
+        DesktopPane.add(this.j1);
     }
 
     /**
@@ -40,20 +52,24 @@ public class Window extends javax.swing.JFrame {
         bStatistics = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         javax.swing.GroupLayout DesktopPaneLayout = new javax.swing.GroupLayout(DesktopPane);
         DesktopPane.setLayout(DesktopPaneLayout);
         DesktopPaneLayout.setHorizontalGroup(
             DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 403, Short.MAX_VALUE)
+            .addGap(0, 520, Short.MAX_VALUE)
         );
         DesktopPaneLayout.setVerticalGroup(
             DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 580, Short.MAX_VALUE)
         );
 
-        welcomeLabel.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(DesktopPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 0, 520, 580));
+
+        welcomeLabel.setForeground(new java.awt.Color(102, 0, 255));
         welcomeLabel.setText("Welcome!");
+        getContentPane().add(welcomeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 11, -1, -1));
 
         Game1.setText("Game1");
         Game1.addActionListener(new java.awt.event.ActionListener() {
@@ -61,6 +77,7 @@ public class Window extends javax.swing.JFrame {
                 Game1ActionPerformed(evt);
             }
         });
+        getContentPane().add(Game1, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 59, -1, -1));
 
         Game2.setText("Game2");
         Game2.addActionListener(new java.awt.event.ActionListener() {
@@ -68,6 +85,7 @@ public class Window extends javax.swing.JFrame {
                 Game2ActionPerformed(evt);
             }
         });
+        getContentPane().add(Game2, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 93, -1, -1));
 
         Game3.setText("Game3");
         Game3.addActionListener(new java.awt.event.ActionListener() {
@@ -75,8 +93,15 @@ public class Window extends javax.swing.JFrame {
                 Game3ActionPerformed(evt);
             }
         });
+        getContentPane().add(Game3, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 127, -1, -1));
 
         Game4.setText("Game4");
+        Game4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Game4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Game4, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 168, -1, -1));
 
         bStatistics.setText("Statistics");
         bStatistics.addActionListener(new java.awt.event.ActionListener() {
@@ -84,74 +109,68 @@ public class Window extends javax.swing.JFrame {
                 bStatisticsActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(welcomeLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bStatistics, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Game3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Game4, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Game2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Game1, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(18, 18, 18)))
-                .addComponent(DesktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(DesktopPane, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(welcomeLabel)
-                .addGap(34, 34, 34)
-                .addComponent(Game1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Game2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Game3)
-                .addGap(18, 18, 18)
-                .addComponent(Game4)
-                .addGap(18, 18, 18)
-                .addComponent(bStatistics)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        getContentPane().add(bStatistics, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 209, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void Game1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Game1ActionPerformed
         //here will be the instance of the fist game 
-        Game1 g1 = SingletonG1.getInstance();
-        DesktopPane.add(g1);
-        g1.setVisible(true);   
+        /*the game is about basic mathematical operations as multiplications, 
+        sums, substractions
+        
+        */
+        //this.g1.reset();
+        this.s.setVisible(false);
+        this.g1.setVisible(true); 
+        this.g2.setVisible(false); 
+        this.g3.setVisible(false); 
+        this.j1.setVisible(false);
     }//GEN-LAST:event_Game1ActionPerformed
 
     private void Game2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Game2ActionPerformed
-        // TODO add your handling code here:
-        Game2 g2= SingletonG2.getInstance();
-        DesktopPane.add(g2);
-        g2.setVisible(true);
+        // TODO add your handling code here:  
+        /*
+        The game2 is about the classical game rock paper scissorr, and its about the streak of wins that you can have
+        */
+        this.s.setVisible(false);
+        this.g2.setVisible(true);
+        this.g1.setVisible(false); 
+        this.g3.setVisible(false); 
+        this.j1.setVisible(false);
     }//GEN-LAST:event_Game2ActionPerformed
 
     private void Game3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Game3ActionPerformed
-        // TODO add your handling code here:
-        Game3 g3= SingletonG3.getInstance();
-        DesktopPane.add(g3);
-        g3.setVisible(true);
+        // TODO add your handling code here: 
+        //The game is about bets and is infinite until you lost,the points are the "earnings" that you made in all the game
+        this.s.setVisible(false);
+        this.g3.setVisible(true);
+        this.g2.setVisible(false); 
+        this.g1.setVisible(false); 
+        this.j1.setVisible(false);
     }//GEN-LAST:event_Game3ActionPerformed
 
     private void bStatisticsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bStatisticsActionPerformed
         // TODO add your handling code here:
+       //it sets the stadistics that are in the txt file when the program is initialized
+        this.s.setVisible(true);
+        this.g1.setVisible(false); 
+        this.g2.setVisible(false); 
+        this.g3.setVisible(false);
+        this.j1.setVisible(false);
     }//GEN-LAST:event_bStatisticsActionPerformed
+
+    private void Game4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Game4ActionPerformed
+        // TODO add your handling code here:
+        //it is about to complete a x figure in the fastest time posible
+        // the game was brought by Warren Ivan Álvarez Huete to be implemented in our project
+        this.j1.setVisible(true);
+        j1.startG();
+        this.s.setVisible(false);
+        this.g1.setVisible(false); 
+        this.g2.setVisible(false); 
+        this.g3.setVisible(false); 
+    }//GEN-LAST:event_Game4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -181,16 +200,14 @@ public class Window extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Window().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Window().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane DesktopPane;
-    private javax.swing.JButton Game1;
+    public javax.swing.JButton Game1;
     private javax.swing.JButton Game2;
     private javax.swing.JButton Game3;
     private javax.swing.JButton Game4;
